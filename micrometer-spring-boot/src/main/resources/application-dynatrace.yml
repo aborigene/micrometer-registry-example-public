@@ -1,0 +1,32 @@
+# the default settings for integration tests.
+# for some tests, some of the values specified here are overwritten at runtime
+# using the '--args' flag for gradle.
+# for example: the test checking default metrics sets the following properties to true (see integration_test.go, TestBuiltinMetrics):
+# management.metrics.enable.jvm, management.metrics.enable.http, management.metrics.enable.process
+
+management.metrics.export.dynatrace:
+  # these are read from the environment, but could be specified here.
+  uri: ${DT_METRICS_INGEST_URL}
+  apiToken: ${DT_METRICS_INGEST_API_TOKEN}
+
+  v2:
+    metric-key-prefix: micrometer.example.springboot
+    enrich-with-dynatrace-metadata: true
+    default-dimensions:
+      dimension-key-1: value1
+      dimension-key-2: value2
+
+  step: 10s
+
+# disable the default micrometer metrics, they are not required for the integration test.
+management:
+  metrics:
+    enable:
+      tomcat: false
+      jvm: false
+      process: false
+      system: false
+      logback: false
+      http: false
+
+logging.level.io.micrometer.dynatrace: DEBUG
