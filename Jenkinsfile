@@ -22,7 +22,7 @@ pipeline {
                     kubernetes {
                         label 'micrometer-registry-example-builds'
                         cloud 'linux-amd64'
-                        nodeSelector 'beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux'
+                        nodeSelector 'kubernetes.io/arch=amd64,kubernetes.io/os=linux'
                         namespace 'oss-jenkins-slaves-ni'
                         instanceCap '2'
                         idleMinutes '0'
