@@ -1,0 +1,3 @@
+# this is not mandatory, is just to customize Spring Boot's port
+server:
+  port: 8081

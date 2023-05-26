@@ -6,8 +6,8 @@
 
 management.metrics.export.dynatrace:
   # these are read from the environment, but could be specified here.
-  uri: ${DT_METRICS_INGEST_URL}
-  apiToken: ${DT_METRICS_INGEST_API_TOKEN}
+  #uri: ${DT_METRICS_INGEST_URL}
+  #apiToken: ${DT_METRICS_INGEST_API_TOKEN}
 
   v2:
     metric-key-prefix: micrometer.example.springboot

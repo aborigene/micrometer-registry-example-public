@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newsale-micrometer-sample
+  labels:
+    app: newsale-micrometer-sample
+spec:
+  type: LoadBalancer
+  selector:
+    app: newsale-micrometer-sample
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: newsale-micrometer-sample
+    app.kubernetes.io/name: newsale-micrometer-sample
+    app.kubernetes.io/version: latest
+    app.kubernetes.io/component: service
+    app.kubernetes.io/managed-by: manifests
+    app.kubernetes.io/created-by: admin
+  name: newsale-micrometer-sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: newsale-micrometer-sample
+  template:
+    metadata:
+      labels:
+        app: newsale-micrometer-sample
+    spec:
+      containers:
+        - name: newsale-micrometer-sample
+          image: <image_repo>
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
