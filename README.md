@@ -17,8 +17,6 @@ DT_METRICS_INGEST_API_TOKEN=your.metrics.ingest.token \
 
 ### In a Docker container
 
-#### This step requires operator in CloudNativeFullStack running on K8S
-
 ```shell
 cd micrometer-spring-boot
 
@@ -35,6 +33,8 @@ docker run \
 ```
 
 ### In a K8S
+
+#### This step requires operator in CloudNativeFullStack running on K8S
 
 ```shell
 cd micrometer-spring-boot
